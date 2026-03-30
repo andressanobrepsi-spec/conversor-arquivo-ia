@@ -1,0 +1,390 @@
+<!Conversão de arquivos para educação da IA html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gobots - Extrator Inteligente de PDFs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9f9; color: #595758; }
+        .primary-color { color: #0471b6; }
+        .bg-primary { background-color: #0471b6; }
+        .step-active { background-color: #0471b6; color: white; box-shadow: 0 4px 12px rgba(4, 113, 182, 0.25); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .hidden { display: none; }
+        .loader { border-top-color: #0471b6; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
+                    <div class="bg-primary p-3 rounded-2xl text-white shadow-xl">
+                        <i data-lucide="file-spreadsheet" size="32"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-4xl font-black text-slate-800 tracking-tight leading-none">Go<span class="primary-color">bots</span></h1>
+                        <p class="font-bold text-[10px] uppercase tracking-widest mt-1 italic opacity-70">AI Document Processing</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex items-center gap-3 bg-white p-2 rounded-[2rem] border border-slate-200 shadow-sm">
+                <div id="nav-step-1" class="step-active flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-white/40 bg-white/20">1</span>
+                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Importar</span>
+                </div>
+                <div id="nav-step-2" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">2</span>
+                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Análise IA</span>
+                </div>
+                <div id="nav-step-3" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">3</span>
+                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Resultado</span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Step 1: Upload -->
+        <div id="step-1" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-4 space-y-6">
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                    <h2 class="text-lg font-black mb-8 flex items-center gap-2 text-slate-800 uppercase tracking-tight">
+                        <i data-lucide="info" class="primary-color" size="20"></i> Extração Real via IA
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="relative pl-10">
+                            <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">01</span>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Upload de PDFs</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Os arquivos são lidos individualmente pela nossa IA para garantir 100% de precisão nos campos técnicos.</p>
+                        </div>
+                        <div class="relative pl-10">
+                            <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">02</span>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Contexto Inteligente</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">O conteúdo é extraído e formatado para que possa ser compreendido perfeitamente por outros sistemas de IA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 space-y-6">
+                <div id="dropzone" class="bg-white border-4 border-dashed border-slate-100 rounded-[3rem] p-16 flex flex-col items-center justify-center hover:bg-white hover:shadow-xl transition-all cursor-pointer group" style="border-color: #e2e8f0;">
+                    <input type="file" id="fileInput" multiple hidden accept=".pdf">
+                    <div class="p-7 rounded-3xl mb-6 group-hover:scale-110 transition-transform shadow-inner" style="background-color: rgba(4, 113, 182, 0.1); color: #0471b6;">
+                        <i data-lucide="upload" size="48"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800">Enviar Fichas Técnicas</h3>
+                    <p class="text-slate-400 mt-2 font-semibold">Selecione até 200 PDFs</p>
+                </div>
+
+                <div id="file-list-container" class="hidden bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
+                        <div class="flex items-center gap-3">
+                            <div id="file-count-badge" class="bg-primary text-white px-3 py-1 rounded-full text-xs font-black">0</div>
+                            <h3 class="font-black text-slate-700 uppercase tracking-tight text-sm">Fila de Processamento</h3>
+                        </div>
+                        <button id="btn-clear" class="text-red-400 hover:text-red-600 text-xs font-black transition-colors">LIMPAR FILA</button>
+                    </div>
+                    <div id="file-list" class="max-h-[300px] overflow-y-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-3 custom-scrollbar"></div>
+                    <div class="p-8 bg-slate-50 border-t border-slate-100">
+                        <button id="btn-process" class="w-full bg-primary text-white py-6 rounded-[1.5rem] font-black text-xl flex items-center justify-center gap-4 shadow-2xl transition-all active:scale-[0.98]">
+                            <i data-lucide="zap" size="28"></i> PROCESSAR COM IA GOBOTS
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Processando -->
+        <div id="step-2" class="hidden bg-white rounded-[4rem] p-24 shadow-sm border border-slate-100 flex flex-col items-center justify-center text-center max-w-2xl mx-auto my-12">
+            <div class="relative mb-12 scale-125">
+                <div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
+                <div class="bg-slate-50 p-10 rounded-full relative shadow-inner">
+                    <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24"></div>
+                </div>
+                <div id="progress-text" class="absolute inset-0 flex items-center justify-center text-xs font-black primary-color">0%</div>
+            </div>
+            <h2 class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">A Inteligência está Lendo</h2>
+            <p id="current-file-name" class="text-slate-400 mb-12 max-w-sm font-bold leading-relaxed text-sm truncate px-4 italic">Iniciando análise profunda...</p>
+            <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden shadow-inner mb-6 max-w-md">
+                <div id="progress-bar" class="bg-primary h-full transition-all duration-500 shadow-lg rounded-full" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Step 3: Resultado -->
+        <div id="step-3" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="bg-[#595758] p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 opacity-10 rotate-12">
+                    <i data-lucide="file-spreadsheet" class="primary-color" size="300"></i>
+                </div>
+                <div class="flex items-center gap-8 relative z-10">
+                    <div class="bg-white/10 p-6 rounded-[2rem] backdrop-blur-xl border border-white/10">
+                        <i data-lucide="check-circle" class="primary-color" size="48"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-4xl font-black tracking-tight mb-1">Mapeamento Real</h2>
+                        <p id="result-summary" class="text-slate-300 font-bold text-sm">IA Gobots finalizou a leitura dos PDFs.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
+                    <button id="btn-restart" class="px-10 py-5 rounded-2xl font-black bg-white/5 hover:bg-white/10 transition-all border border-white/10">Novo Lote</button>
+                    <button id="btn-download" class="bg-white primary-color px-12 py-5 rounded-2xl font-black flex items-center justify-center gap-3 shadow-2xl transition-all">
+                        <i data-lucide="download" size="24"></i> BAIXAR PLANILHA
+                    </button>
+                </div>
+            </div>
+
+            <!-- Instruções Suporte -->
+            <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100">
+                <h3 class="font-black text-slate-800 flex items-center gap-4 text-xl mb-6">
+                    <i data-lucide="help-circle" class="primary-color" size="24"></i> Próximos Passos
+                </h3>
+                <div class="space-y-6 text-sm font-medium text-slate-600">
+                    <div class="flex gap-4">
+                        <i data-lucide="mail" class="text-slate-400"></i>
+                        <p>Baixe a planilha e envie para seu gerente de contas ou time de Customer Experience.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="external-link" class="text-slate-400"></i>
+                        <p>Link Portal: <a href="https://gobots.atlassian.net/servicedesk/customer/portal/7/group/29/create/10461" target="_blank" class="primary-color font-bold underline">Portal de Serviços Atlassian</a></p>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="message-circle" class="text-green-500"></i>
+                        <p>Suporte WhatsApp: <a href="https://api.whatsapp.com/send/?phone=551145024714&text&type=phone_number&app_absent=0" target="_blank" class="text-green-600 font-bold underline">Conversar agora</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela Visual -->
+            <div class="bg-white rounded-[3rem] shadow-sm border border-slate-100 overflow-hidden">
+                <div class="p-10 border-b border-slate-50 flex items-center justify-between">
+                    <h3 class="font-black text-slate-800 flex items-center gap-4 text-xl">
+                        <i data-lucide="eye" class="primary-color" size="24"></i> Dados Extraídos pela IA
+                    </h3>
+                    <span class="text-[10px] font-black bg-blue-50 primary-color px-3 py-1 rounded-full border border-blue-100 tracking-widest uppercase">Processamento Real</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50/50 text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] border-b border-slate-50">
+                            <tr>
+                                <th class="px-8 py-6">EAN</th>
+                                <th class="px-8 py-6">SKU</th>
+                                <th class="px-8 py-6">MLB</th>
+                                <th class="px-8 py-6">Acompanha</th>
+                                <th class="px-8 py-6">Medidas</th>
+                                <th class="px-8 py-6">Compatibilidade</th>
+                                <th class="px-8 py-6 text-slate-300 italic">Gestão</th>
+                            </tr>
+                        </thead>
+                        <tbody id="result-table-body" class="divide-y divide-slate-50 font-medium text-slate-700"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-24 pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-300 text-[10px] font-black tracking-[0.3em] uppercase">
+            <p>© 2024 GOBOTS • POWERED BY GEMINI 2.5 AI</p>
+        </footer>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl">
+            <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="alert-triangle" size="32"></i>
+            </div>
+            <h4 class="text-xl font-black text-slate-800 mb-2">Erro no Processamento</h4>
+            <p id="error-message" class="text-sm text-slate-500 mb-6">Não foi possível ler o arquivo. Tente novamente mais tarde.</p>
+            <button id="close-error" class="w-full bg-slate-800 text-white py-3 rounded-xl font-bold">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const apiKey = "";
+        const modelId = "gemini-2.5-flash-preview-09-2025";
+        
+        let files = [];
+        let processedData = [];
+
+        // DOM Elements
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const fileListContainer = document.getElementById('file-list-container');
+        const fileList = document.getElementById('file-list');
+        const fileCountBadge = document.getElementById('file-count-badge');
+        const btnClear = document.getElementById('btn-clear');
+        const btnProcess = document.getElementById('btn-process');
+        const btnRestart = document.getElementById('btn-restart');
+        const btnDownload = document.getElementById('btn-download');
+        const currentFileNameDisplay = document.getElementById('current-file-name');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const errorModal = document.getElementById('error-modal');
+        const errorMessage = document.getElementById('error-message');
+        const closeError = document.getElementById('close-error');
+
+        // Logic
+        dropzone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+        btnClear.addEventListener('click', () => { files = []; renderFileList(); });
+        btnProcess.addEventListener('click', startAIProcessing);
+        btnRestart.addEventListener('click', () => { location.reload(); });
+        closeError.addEventListener('click', () => errorModal.classList.add('hidden'));
+
+        function handleFiles(newFiles) {
+            const pdfs = Array.from(newFiles).filter(f => f.type === 'application/pdf');
+            if (pdfs.length < newFiles.length) showError("Apenas arquivos PDF são permitidos para análise de IA.");
+            files = [...files, ...pdfs].slice(0, 200);
+            renderFileList();
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = '';
+            fileListContainer.classList.toggle('hidden', files.length === 0);
+            fileCountBadge.textContent = files.length;
+            files.forEach((f, i) => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-[1.25rem]";
+                div.innerHTML = `<div class="flex items-center gap-3 truncate"><i data-lucide="file-text" class="primary-color shrink-0"></i><span class="text-xs font-bold truncate">${f.name}</span></div><button onclick="removeFile(${i})" class="text-slate-300 hover:text-red-500"><i data-lucide="x" size="16"></i></button>`;
+                fileList.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        window.removeFile = (i) => { files.splice(i, 1); renderFileList(); };
+
+        function showError(msg) {
+            errorMessage.textContent = msg;
+            errorModal.classList.remove('hidden');
+        }
+
+        async function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function callGeminiAPI(base64Data, fileName) {
+            const systemPrompt = `Você é um especialista em logística e gestão de estoque. Sua tarefa é extrair dados técnicos deste arquivo PDF para preencher uma planilha industrial.
+            Extraia exatamente os seguintes campos:
+            - EAN (Código de barras)
+            - SKU (Identificador interno)
+            - MLB (ID do Mercado Livre, se houver)
+            - ACOMPANHA (Descrição do que vem na embalagem)
+            - MEDIDAS (Formatadas como L x A x P em cm ou conforme informado)
+            - COMPATIBILIDADE (Lista de itens compatíveis)
+            
+            Prepare as descrições de "ACOMPANHA" e "COMPATIBILIDADE" de forma clara e estruturada, facilitando a compreensão para outras IAs futuramente.
+            Retorne APENAS um objeto JSON válido seguindo este formato:
+            {"ean": "", "sku": "", "mlb": "", "acompanha": "", "medidas": "", "compatibilidade": ""}`;
+
+            const payload = {
+                contents: [{
+                    parts: [
+                        { text: `Analise a ficha técnica do arquivo: ${fileName}` },
+                        { inlineData: { mimeType: "application/pdf", data: base64Data } }
+                    ]
+                }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: { responseMimeType: "application/json" }
+            };
+
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error("API Failure");
+                    const result = await response.json();
+                    const textResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    return JSON.parse(textResponse);
+                } catch (err) {
+                    if (i === 4) throw err;
+                    await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
+                }
+            }
+        }
+
+        async function startAIProcessing() {
+            if (files.length === 0) return;
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.remove('hidden');
+            document.getElementById('nav-step-1').className = "text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full";
+            document.getElementById('nav-step-2').className = "step-active flex items-center gap-3 px-6 py-2.5 rounded-full";
+
+            processedData = [];
+            for (let i = 0; i < files.length; i++) {
+                currentFileNameDisplay.textContent = `Lendo: ${files[i].name}...`;
+                try {
+                    const b64 = await fileToBase64(files[i]);
+                    const data = await callGeminiAPI(b64, files[i].name);
+                    
+                    processedData.push({
+                        'EAN': data.ean || 'N/A',
+                        'SKU': data.sku || 'N/A',
+                        'MLB ': data.mlb || 'N/A',
+                        'O QUE ACOMPANHA O PRODUTO': data.acompanha || 'Não especificado',
+                        'MEDIDAS': data.medidas || 'Não especificado',
+                        'COMPATIBILIDADE ': data.compatibilidade || 'Não especificado',
+                        'IMPLEMENTADO': ''
+                    });
+                } catch (err) {
+                    console.error("Erro no arquivo " + files[i].name, err);
+                    processedData.push({ 'EAN': 'ERRO NA LEITURA', 'SKU': files[i].name, 'IMPLEMENTADO': 'FALHA' });
+                }
+                const p = Math.round(((i + 1) / files.length) * 100);
+                progressBar.style.width = `${p}%`;
+                progressText.textContent = `${p}%`;
+            }
+
+            renderResults();
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+            document.getElementById('nav-step-2').className = "text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full";
+            document.getElementById('nav-step-3').className = "step-active flex items-center gap-3 px-6 py-2.5 rounded-full";
+        }
+
+        function renderResults() {
+            const tbody = document.getElementById('result-table-body');
+            tbody.innerHTML = '';
+            processedData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-8 py-6 font-mono text-xs">${row.EAN}</td>
+                    <td class="px-8 py-6 font-bold">${row.SKU}</td>
+                    <td class="px-8 py-6 primary-color font-bold">${row['MLB ']}</td>
+                    <td class="px-8 py-6 text-xs max-w-[200px] truncate">${row['O QUE ACOMPANHA O PRODUTO']}</td>
+                    <td class="px-8 py-6 text-xs">${row.MEDIDAS}</td>
+                    <td class="px-8 py-6 text-xs italic">${row['COMPATIBILIDADE ']}</td>
+                    <td class="px-8 py-6 text-slate-200 text-center">—</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function downloadExcel() {
+            const ws = XLSX.utils.json_to_sheet(processedData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Dados Gobots AI");
+            ws['!cols'] = [{wch: 18}, {wch: 15}, {wch: 15}, {wch: 45}, {wch: 20}, {wch: 40}, {wch: 15}];
+            XLSX.writeFile(wb, "gobots_extracao_ia.xlsx");
+        }
+    </script>
+</body>
+</html>
