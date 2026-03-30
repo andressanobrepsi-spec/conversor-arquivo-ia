@@ -1,10 +1,3 @@
-echo "# conversor-arquivo-ia" >> README.md
-git init 
-git add README.md 
-git commit -m "primeiro commit" 
-git branch -M main 
-git remote add origin https://github.com/andressanobrepsi-spec/conversor-arquivo-ia.git
- git push -u origin main
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Upload, 
