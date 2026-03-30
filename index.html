@@ -1,11 +1,14 @@
-<!Conversão de arquivos para educação da IA html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gobots - Extrator Inteligente de PDFs</title>
+    <!-- Tailwind CSS para Estilização -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- SheetJS para Exportação Excel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
@@ -38,20 +41,22 @@
                 </div>
             </div>
 
-            <nav class="flex items-center gap-3 bg-white p-2 rounded-[2rem] border border-slate-200 shadow-sm">
-                <div id="nav-step-1" class="step-active flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
-                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-white/40 bg-white/20">1</span>
-                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Importar</span>
-                </div>
-                <div id="nav-step-2" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
-                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">2</span>
-                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Análise IA</span>
-                </div>
-                <div id="nav-step-3" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
-                    <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">3</span>
-                    <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Resultado</span>
-                </div>
-            </nav>
+            <div class="flex items-center gap-4">
+                <nav class="flex items-center gap-3 bg-white p-2 rounded-[2rem] border border-slate-200 shadow-sm">
+                    <div id="nav-step-1" class="step-active flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                        <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-white/40 bg-white/20">1</span>
+                        <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Importar</span>
+                    </div>
+                    <div id="nav-step-2" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                        <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">2</span>
+                        <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Análise IA</span>
+                    </div>
+                    <div id="nav-step-3" class="text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full transition-all duration-300">
+                        <span class="w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold border border-slate-200">3</span>
+                        <span class="text-xs font-black uppercase tracking-wider hidden sm:inline">Resultado</span>
+                    </div>
+                </nav>
+            </div>
         </header>
 
         <!-- Passo 1: Upload -->
@@ -65,17 +70,17 @@
                         <div class="relative pl-10">
                             <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">01</span>
                             <h3 class="text-sm font-black text-slate-700 mb-1">Upload de PDFs</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Os ficheiros são lidos individualmente para garantir a máxima precisão técnica.</p>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Os ficheiros são lidos com concorrência massiva para garantir velocidade e precisão técnica.</p>
                         </div>
                         <div class="relative pl-10">
                             <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">02</span>
-                            <h3 class="text-sm font-black text-slate-700 mb-1">Medidas Completas</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed font-medium">A IA extrai dimensões, peso (gramas), volume (litros) e tamanhos (P/M/G) automaticamente.</p>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Dados Consolidados</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">A IA extrai dimensões, peso (gramas/kg), volume (litros) e tamanhos de forma unificada.</p>
                         </div>
                         <div class="relative pl-10">
                             <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">03</span>
-                            <h3 class="text-sm font-black text-slate-700 mb-1">Contexto Estruturado</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Conteúdo formatado para compreensão humana e de outros sistemas de IA.</p>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Ultra Performance</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Processamento paralelo de até 50 documentos em simultâneo para fluxos de alto volume.</p>
                         </div>
                     </div>
                 </div>
@@ -88,7 +93,7 @@
                         <i data-lucide="upload" size="48"></i>
                     </div>
                     <h3 class="text-2xl font-black text-slate-800">Enviar Fichas Técnicas</h3>
-                    <p class="text-slate-400 mt-2 font-semibold">Selecione até 200 PDFs</p>
+                    <p class="text-slate-400 mt-2 font-semibold italic">Comporta até 50 PDFs</p>
                 </div>
 
                 <div id="file-list-container" class="hidden bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
@@ -102,7 +107,7 @@
                     <div id="file-list" class="max-h-[300px] overflow-y-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-3 custom-scrollbar"></div>
                     <div class="p-8 bg-slate-50 border-t border-slate-100">
                         <button id="btn-process" class="w-full bg-primary text-white py-6 rounded-[1.5rem] font-black text-xl flex items-center justify-center gap-4 shadow-2xl transition-all active:scale-[0.98]">
-                            <i data-lucide="zap" size="28"></i> PROCESSAR COM IA GOBOTS
+                            <i data-lucide="zap" size="28"></i> PROCESSAR COM VELOCIDADE MÁXIMA
                         </button>
                     </div>
                 </div>
@@ -118,8 +123,8 @@
                 </div>
                 <div id="progress-text" class="absolute inset-0 flex items-center justify-center text-xs font-black primary-color">0%</div>
             </div>
-            <h2 class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">A Analisar Documentos</h2>
-            <p id="current-file-name" class="text-slate-400 mb-12 max-w-sm font-bold leading-relaxed text-sm truncate px-4 italic">A iniciar análise...</p>
+            <h2 class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">Processamento Massivo</h2>
+            <p id="current-file-name" class="text-slate-400 mb-12 max-w-sm font-bold leading-relaxed text-sm truncate px-4 italic">Analisando até 50 ficheiros simultaneamente...</p>
             <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden shadow-inner mb-6 max-w-md">
                 <div id="progress-bar" class="bg-primary h-full transition-all duration-500 shadow-lg rounded-full" style="width: 0%"></div>
             </div>
@@ -137,13 +142,13 @@
                     </div>
                     <div>
                         <h2 class="text-4xl font-black tracking-tight mb-1">Mapeamento Concluído</h2>
-                        <p id="result-summary" class="text-slate-300 font-bold text-sm">A IA finalizou a leitura e organização dos dados.</p>
+                        <p id="result-summary" class="text-slate-300 font-bold text-sm">Dados extraídos com base nos campos técnicos validados.</p>
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
                     <button id="btn-restart" class="px-10 py-5 rounded-2xl font-black bg-white/5 hover:bg-white/10 transition-all border border-white/10">Novo Lote</button>
                     <button id="btn-download" class="bg-white primary-color px-12 py-5 rounded-2xl font-black flex items-center justify-center gap-3 shadow-2xl transition-all">
-                        <i data-lucide="download" size="24"></i> BAIXAR PLANILHA
+                        <i data-lucide="download" size="24"></i> BAIXAR PLANILHA GOBOTS
                     </button>
                 </div>
             </div>
@@ -173,18 +178,18 @@
             <div class="bg-white rounded-[3rem] shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-10 border-b border-slate-50 flex items-center justify-between">
                     <h3 class="font-black text-slate-800 flex items-center gap-4 text-xl">
-                        <i data-lucide="eye" class="primary-color" size="24"></i> Dados Extraídos (IA)
+                        <i data-lucide="eye" class="primary-color" size="24"></i> Dados Extraídos (Alta Precisão)
                     </h3>
-                    <span class="text-[10px] font-black bg-blue-50 primary-color px-3 py-1 rounded-full border border-blue-100 tracking-widest uppercase italic">Dimensões • Peso • Litros • Tamanho</span>
+                    <span class="text-[10px] font-black bg-blue-50 primary-color px-3 py-1 rounded-full border border-blue-100 tracking-widest uppercase italic">EAN • SKU • MLB • Dimensões • Peso</span>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
                         <thead class="bg-slate-50/50 text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] border-b border-slate-50">
                             <tr>
                                 <th class="px-8 py-6">EAN</th>
                                 <th class="px-8 py-6">SKU</th>
                                 <th class="px-8 py-6">MLB</th>
-                                <th class="px-8 py-6">Acompanha</th>
+                                <th class="px-8 py-6">O que acompanha</th>
                                 <th class="px-8 py-6">Medidas</th>
                                 <th class="px-8 py-6">Compatibilidade</th>
                                 <th class="px-8 py-6 text-slate-300 italic">Gestão</th>
@@ -207,21 +212,27 @@
             <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i data-lucide="alert-triangle" size="32"></i>
             </div>
-            <h4 class="text-xl font-black text-slate-800 mb-2">Erro de Processamento</h4>
-            <p id="error-message" class="text-sm text-slate-500 mb-6">Não foi possível ler o arquivo ou a resposta da IA foi inválida.</p>
+            <h4 class="text-xl font-black text-slate-800 mb-2">Falha no Processamento</h4>
+            <p id="error-message" class="text-sm text-slate-500 mb-6">Não foi possível ler os arquivos. Verifique sua conexão e tente novamente.</p>
             <button id="close-error" class="w-full bg-slate-800 text-white py-3 rounded-xl font-bold">Fechar</button>
         </div>
     </div>
 
     <script>
         lucide.createIcons();
-        const apiKey = "";
+        
+        // Configurações Mandatórias da API
+        const apiKey = ""; 
         const modelId = "gemini-2.5-flash-preview-09-2025";
         
+        // Limite de ficheiros atualizado para 50
+        const MAX_FILES = 50;
+        const CONCURRENCY_LIMIT = 50;
+
         let filesList = [];
         let processedData = [];
 
-        // DOM Elements
+        // Elementos DOM
         const dropzone = document.getElementById('dropzone');
         const fileInput = document.getElementById('fileInput');
         const fileListContainer = document.getElementById('file-list-container');
@@ -234,11 +245,12 @@
         const currentFileNameDisplay = document.getElementById('current-file-name');
         const progressBar = document.getElementById('progress-bar');
         const progressText = document.getElementById('progress-text');
+        
         const errorModal = document.getElementById('error-modal');
         const errorMessage = document.getElementById('error-message');
         const closeError = document.getElementById('close-error');
 
-        // Logic
+        // Lógica de Gestão de Ficheiros
         dropzone.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
         btnClear.addEventListener('click', () => { filesList = []; renderFileList(); });
@@ -249,7 +261,15 @@
         function handleFiles(newFiles) {
             const pdfs = Array.from(newFiles).filter(f => f.type === 'application/pdf');
             if (pdfs.length < newFiles.length) showError("Apenas ficheiros PDF são permitidos.");
-            filesList = [...filesList, ...pdfs].slice(0, 200);
+            
+            if (filesList.length + pdfs.length > MAX_FILES) {
+                showError(`O limite é de ${MAX_FILES} ficheiros por lote.`);
+                const remaining = MAX_FILES - filesList.length;
+                filesList = [...filesList, ...pdfs.slice(0, remaining)];
+            } else {
+                filesList = [...filesList, ...pdfs];
+            }
+            
             renderFileList();
         }
 
@@ -288,28 +308,29 @@
                 return JSON.parse(cleaned);
             } catch (e) {
                 console.error("Erro ao limpar JSON:", e, text);
-                throw new Error("A resposta da IA não é um JSON válido.");
+                throw new Error("Resposta da IA inválida.");
             }
         }
 
         async function callGeminiAPI(base64Data, fileName) {
-            const systemPrompt = `Você é um especialista em logística e catálogo industrial. Sua tarefa é extrair dados técnicos deste PDF para uma planilha.
-            IMPORTANTE: Retorne APENAS o objeto JSON. No campo "medidas", consolide todas as informações de tamanho físico, dimensões (L x A x P), peso (gramas/kg), volume (litros) ou tamanhos nominais (P, M, G, GG, etc.) encontrados no documento.
-            
-            Campos solicitados:
-            - ean: Código de barras numérico.
-            - sku: Código identificador do produto.
-            - mlb: ID único do Mercado Livre (se disponível).
-            - acompanha: Lista clara de componentes inclusos na embalagem.
-            - medidas: String consolidando Litros, Gramas/Peso, Tamanhos (P/M/G) e Dimensões.
-            - compatibilidade: Lista de modelos ou marcas compatíveis.
-            
+            const systemPrompt = `Você é um especialista em logística. Extraia dados técnicos deste PDF para uma planilha seguindo este mapeamento:
+            - EAN: Código de barras (numérico).
+            - SKU: Código identificador/referência do produto.
+            - MLB : ID único do Mercado Livre (ex: MLB123456789).
+            - O QUE ACOMPANHA O PRODUTO: Lista clara de componentes/itens inclusos na embalagem.
+            - MEDIDAS: String consolidando Peso (gramas/kg), Volume (litros), Tamanhos nominais (P/M/G) e Dimensões físicas (LxAxP).
+            - COMPATIBILIDADE : Lista de modelos, marcas ou equipamentos compatíveis.
+
+            IMPORTANTE: 
+            1. Retorne APENAS um objeto JSON válido.
+            2. Não use blocos de código Markdown.
+            3. Se um dado não existir, retorne "N/A".
             Formato de saída: {"ean": "", "sku": "", "mlb": "", "acompanha": "", "medidas": "", "compatibilidade": ""}`;
 
             const payload = {
                 contents: [{
                     parts: [
-                        { text: `Extraia os dados técnicos abrangentes (incluindo gramas, litros e tamanhos) do ficheiro: ${fileName}` },
+                        { text: `Extraia os dados técnicos (incluindo gramas, litros, tamanhos e dimensões) do ficheiro: ${fileName}` },
                         { inlineData: { mimeType: "application/pdf", data: base64Data } }
                     ]
                 }],
@@ -330,7 +351,10 @@
                         body: JSON.stringify(payload)
                     });
                     
-                    if (!response.ok) throw new Error("API Indisponível");
+                    if (!response.ok) {
+                        const errBody = await response.json();
+                        throw new Error(errBody.error?.message || "Erro de API");
+                    }
                     
                     const result = await response.json();
                     const textResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -347,43 +371,62 @@
 
         async function startAIProcessing() {
             if (filesList.length === 0) return;
+
             document.getElementById('step-1').classList.add('hidden');
             document.getElementById('step-2').classList.remove('hidden');
             document.getElementById('nav-step-1').className = "text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full";
             document.getElementById('nav-step-2').className = "step-active flex items-center gap-3 px-6 py-2.5 rounded-full";
 
-            processedData = [];
-            for (let i = 0; i < filesList.length; i++) {
-                currentFileNameDisplay.textContent = `A extrair dados técnicos: ${filesList[i].name}...`;
-                try {
-                    const b64 = await fileToBase64(filesList[i]);
-                    const data = await callGeminiAPI(b64, filesList[i].name);
-                    
-                    processedData.push({
-                        'EAN': data.ean || 'N/D',
-                        'SKU': data.sku || 'N/D',
-                        'MLB ': data.mlb || 'N/D',
-                        'O QUE ACOMPANHA O PRODUTO': data.acompanha || 'Não especificado',
-                        'MEDIDAS': data.medidas || 'Não especificado',
-                        'COMPATIBILIDADE ': data.compatibilidade || 'Não especificado',
-                        'IMPLEMENTADO': ''
-                    });
-                } catch (err) {
-                    console.error("Falha no ficheiro: " + filesList[i].name, err);
-                    processedData.push({ 
-                        'EAN': 'ERRO DE LEITURA', 
-                        'SKU': filesList[i].name, 
-                        'MLB ': 'N/D',
-                        'O QUE ACOMPANHA O PRODUTO': 'Erro ao analisar JSON',
-                        'MEDIDAS': 'N/D',
-                        'COMPATIBILIDADE ': 'N/D',
-                        'IMPLEMENTADO': 'FALHA' 
-                    });
-                }
-                const p = Math.round(((i + 1) / filesList.length) * 100);
+            processedData = new Array(filesList.length);
+            const tasks = [...filesList.entries()];
+            let completed = 0;
+
+            const updateProgress = () => {
+                completed++;
+                const p = Math.round((completed / filesList.length) * 100);
                 progressBar.style.width = `${p}%`;
                 progressText.textContent = `${p}%`;
-            }
+            };
+
+            const worker = async () => {
+                while (tasks.length > 0) {
+                    const [index, file] = tasks.shift();
+                    currentFileNameDisplay.textContent = `Em processamento: ${file.name}...`;
+                    
+                    try {
+                        const b64 = await fileToBase64(file);
+                        const data = await callGeminiAPI(b64, file.name);
+                        
+                        processedData[index] = {
+                            'EAN': data.ean || 'N/A',
+                            'SKU': data.sku || 'N/A',
+                            'MLB ': data.mlb || 'N/A',
+                            'O QUE ACOMPANHA O PRODUTO': data.acompanha || 'Não especificado',
+                            'MEDIDAS': data.medidas || 'Não especificado',
+                            'COMPATIBILIDADE ': data.compatibilidade || 'Não especificado',
+                            'IMPLEMENTADO': ''
+                        };
+                    } catch (err) {
+                        console.error("Falha no ficheiro: " + file.name, err);
+                        processedData[index] = { 
+                            'EAN': 'ERRO', 
+                            'SKU': file.name, 
+                            'MLB ': 'FALHA',
+                            'O QUE ACOMPANHA O PRODUTO': err.message || 'Erro de análise',
+                            'MEDIDAS': 'N/D',
+                            'COMPATIBILIDADE ': 'N/D',
+                            'IMPLEMENTADO': 'FALHA' 
+                        };
+                    }
+                    updateProgress();
+                }
+            };
+
+            const workers = Array(Math.min(CONCURRENCY_LIMIT, filesList.length))
+                .fill(null)
+                .map(() => worker());
+
+            await Promise.all(workers);
 
             renderResults();
             document.getElementById('step-2').classList.add('hidden');
@@ -397,14 +440,15 @@
             tbody.innerHTML = '';
             processedData.forEach(row => {
                 const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition-colors";
                 tr.innerHTML = `
-                    <td class="px-8 py-6 font-mono text-xs">${row.EAN}</td>
+                    <td class="px-8 py-6 font-mono text-xs font-bold">${row.EAN}</td>
                     <td class="px-8 py-6 font-bold text-slate-800">${row.SKU}</td>
                     <td class="px-8 py-6 primary-color font-bold">${row['MLB ']}</td>
-                    <td class="px-8 py-6 text-xs max-w-[200px] truncate">${row['O QUE ACOMPANHA O PRODUTO']}</td>
+                    <td class="px-8 py-6 text-xs max-w-[200px] truncate" title="${row['O QUE ACOMPANHA O PRODUTO']}">${row['O QUE ACOMPANHA O PRODUTO']}</td>
                     <td class="px-8 py-6 text-xs font-semibold">${row.MEDIDAS}</td>
-                    <td class="px-8 py-6 text-xs italic text-slate-500">${row['COMPATIBILIDADE ']}</td>
-                    <td class="px-8 py-6 text-slate-200 text-center">—</td>
+                    <td class="px-8 py-6 text-xs italic text-slate-500" title="${row['COMPATIBILIDADE ']}">${row['COMPATIBILIDADE ']}</td>
+                    <td class="px-8 py-6 text-slate-200 text-center font-black">—</td>
                 `;
                 tbody.appendChild(tr);
             });
