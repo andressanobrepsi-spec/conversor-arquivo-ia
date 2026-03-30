@@ -19,11 +19,12 @@
         .hidden { display: none; }
         .loader { border-top-color: #0471b6; animation: spinner 1.5s linear infinite; }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .link-hover:hover { text-decoration: underline; color: #0471b6; }
     </style>
 </head>
 <body class="min-h-screen p-6 md:p-12">
     <div class="max-w-6xl mx-auto">
-        <!-- Header -->
+        <!-- Cabeçalho -->
         <header class="mb-12 flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="text-center md:text-left">
                 <div class="flex items-center justify-center md:justify-start gap-4 mb-2">
@@ -32,7 +33,7 @@
                     </div>
                     <div>
                         <h1 class="text-4xl font-black text-slate-800 tracking-tight leading-none">Go<span class="primary-color">bots</span></h1>
-                        <p class="font-bold text-[10px] uppercase tracking-widest mt-1 italic opacity-70">AI Document Processing</p>
+                        <p class="font-bold text-[10px] uppercase tracking-widest mt-1 italic opacity-70">Processamento de Documentos IA</p>
                     </div>
                 </div>
             </div>
@@ -53,23 +54,28 @@
             </nav>
         </header>
 
-        <!-- Step 1: Upload -->
+        <!-- Passo 1: Upload -->
         <div id="step-1" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-4 space-y-6">
                 <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
                     <h2 class="text-lg font-black mb-8 flex items-center gap-2 text-slate-800 uppercase tracking-tight">
-                        <i data-lucide="info" class="primary-color" size="20"></i> Extração Real via IA
+                        <i data-lucide="info" class="primary-color" size="20"></i> Extração Inteligente
                     </h2>
                     <div class="space-y-8">
                         <div class="relative pl-10">
                             <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">01</span>
                             <h3 class="text-sm font-black text-slate-700 mb-1">Upload de PDFs</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Os arquivos são lidos individualmente pela nossa IA para garantir 100% de precisão nos campos técnicos.</p>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Os ficheiros são lidos individualmente para garantir a máxima precisão técnica.</p>
                         </div>
                         <div class="relative pl-10">
                             <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">02</span>
-                            <h3 class="text-sm font-black text-slate-700 mb-1">Contexto Inteligente</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed font-medium">O conteúdo é extraído e formatado para que possa ser compreendido perfeitamente por outros sistemas de IA.</p>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Medidas Completas</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">A IA extrai dimensões, peso (gramas), volume (litros) e tamanhos (P/M/G) automaticamente.</p>
+                        </div>
+                        <div class="relative pl-10">
+                            <span class="absolute left-0 top-0 font-black text-4xl leading-none select-none opacity-10">03</span>
+                            <h3 class="text-sm font-black text-slate-700 mb-1">Contexto Estruturado</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed font-medium">Conteúdo formatado para compreensão humana e de outros sistemas de IA.</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +109,7 @@
             </div>
         </div>
 
-        <!-- Step 2: Processando -->
+        <!-- Passo 2: Processando -->
         <div id="step-2" class="hidden bg-white rounded-[4rem] p-24 shadow-sm border border-slate-100 flex flex-col items-center justify-center text-center max-w-2xl mx-auto my-12">
             <div class="relative mb-12 scale-125">
                 <div class="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
@@ -112,14 +118,14 @@
                 </div>
                 <div id="progress-text" class="absolute inset-0 flex items-center justify-center text-xs font-black primary-color">0%</div>
             </div>
-            <h2 class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">A Inteligência está Lendo</h2>
-            <p id="current-file-name" class="text-slate-400 mb-12 max-w-sm font-bold leading-relaxed text-sm truncate px-4 italic">Iniciando análise profunda...</p>
+            <h2 class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">A Analisar Documentos</h2>
+            <p id="current-file-name" class="text-slate-400 mb-12 max-w-sm font-bold leading-relaxed text-sm truncate px-4 italic">A iniciar análise...</p>
             <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden shadow-inner mb-6 max-w-md">
                 <div id="progress-bar" class="bg-primary h-full transition-all duration-500 shadow-lg rounded-full" style="width: 0%"></div>
             </div>
         </div>
 
-        <!-- Step 3: Resultado -->
+        <!-- Passo 3: Resultado -->
         <div id="step-3" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div class="bg-[#595758] p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
                 <div class="absolute -right-20 -bottom-20 opacity-10 rotate-12">
@@ -130,8 +136,8 @@
                         <i data-lucide="check-circle" class="primary-color" size="48"></i>
                     </div>
                     <div>
-                        <h2 class="text-4xl font-black tracking-tight mb-1">Mapeamento Real</h2>
-                        <p id="result-summary" class="text-slate-300 font-bold text-sm">IA Gobots finalizou a leitura dos PDFs.</p>
+                        <h2 class="text-4xl font-black tracking-tight mb-1">Mapeamento Concluído</h2>
+                        <p id="result-summary" class="text-slate-300 font-bold text-sm">A IA finalizou a leitura e organização dos dados.</p>
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
@@ -148,17 +154,17 @@
                     <i data-lucide="help-circle" class="primary-color" size="24"></i> Próximos Passos
                 </h3>
                 <div class="space-y-6 text-sm font-medium text-slate-600">
-                    <div class="flex gap-4">
-                        <i data-lucide="mail" class="text-slate-400"></i>
-                        <p>Baixe a planilha e envie para seu gerente de contas ou time de Customer Experience.</p>
+                    <div class="flex gap-4 items-start">
+                        <i data-lucide="mail" class="text-slate-400 mt-1"></i>
+                        <p>Baixe a planilha e envie para o seu gerente de contas/sucesso ou encaminhe para o time de Customer Experience.</p>
                     </div>
-                    <div class="flex gap-4">
-                        <i data-lucide="external-link" class="text-slate-400"></i>
-                        <p>Link Portal: <a href="https://gobots.atlassian.net/servicedesk/customer/portal/7/group/29/create/10461" target="_blank" class="primary-color font-bold underline">Portal de Serviços Atlassian</a></p>
+                    <div class="flex gap-4 items-start">
+                        <i data-lucide="external-link" class="text-slate-400 mt-1"></i>
+                        <p>Abra sua solicitação e insira a planilha: <a href="https://gobots.atlassian.net/servicedesk/customer/portal/7/group/29/create/10461" target="_blank" class="primary-color font-bold underline link-hover">Portal Atlassian Gobots</a></p>
                     </div>
-                    <div class="flex gap-4">
-                        <i data-lucide="message-circle" class="text-green-500"></i>
-                        <p>Suporte WhatsApp: <a href="https://api.whatsapp.com/send/?phone=551145024714&text&type=phone_number&app_absent=0" target="_blank" class="text-green-600 font-bold underline">Conversar agora</a></p>
+                    <div class="flex gap-4 items-start">
+                        <i data-lucide="message-circle" class="text-green-500 mt-1"></i>
+                        <p>Abra sua solicitação via Whatsapp: <a href="https://api.whatsapp.com/send/?phone=551145024714&text&type=phone_number&app_absent=0" target="_blank" class="text-green-600 font-bold underline link-hover">Conversar com Suporte</a></p>
                     </div>
                 </div>
             </div>
@@ -167,9 +173,9 @@
             <div class="bg-white rounded-[3rem] shadow-sm border border-slate-100 overflow-hidden">
                 <div class="p-10 border-b border-slate-50 flex items-center justify-between">
                     <h3 class="font-black text-slate-800 flex items-center gap-4 text-xl">
-                        <i data-lucide="eye" class="primary-color" size="24"></i> Dados Extraídos pela IA
+                        <i data-lucide="eye" class="primary-color" size="24"></i> Dados Extraídos (IA)
                     </h3>
-                    <span class="text-[10px] font-black bg-blue-50 primary-color px-3 py-1 rounded-full border border-blue-100 tracking-widest uppercase">Processamento Real</span>
+                    <span class="text-[10px] font-black bg-blue-50 primary-color px-3 py-1 rounded-full border border-blue-100 tracking-widest uppercase italic">Dimensões • Peso • Litros • Tamanho</span>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm">
@@ -191,18 +197,18 @@
         </div>
 
         <footer class="mt-24 pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-300 text-[10px] font-black tracking-[0.3em] uppercase">
-            <p>© 2024 GOBOTS • POWERED BY GEMINI 2.5 AI</p>
+            <p>© 2024 GOBOTS • POWERED BY GEMINI IA</p>
         </footer>
     </div>
 
-    <!-- Error Modal -->
+    <!-- Modal de Erro -->
     <div id="error-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl">
             <div class="bg-red-50 text-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i data-lucide="alert-triangle" size="32"></i>
             </div>
-            <h4 class="text-xl font-black text-slate-800 mb-2">Erro no Processamento</h4>
-            <p id="error-message" class="text-sm text-slate-500 mb-6">Não foi possível ler o arquivo. Tente novamente mais tarde.</p>
+            <h4 class="text-xl font-black text-slate-800 mb-2">Erro de Processamento</h4>
+            <p id="error-message" class="text-sm text-slate-500 mb-6">Não foi possível ler o arquivo ou a resposta da IA foi inválida.</p>
             <button id="close-error" class="w-full bg-slate-800 text-white py-3 rounded-xl font-bold">Fechar</button>
         </div>
     </div>
@@ -212,7 +218,7 @@
         const apiKey = "";
         const modelId = "gemini-2.5-flash-preview-09-2025";
         
-        let files = [];
+        let filesList = [];
         let processedData = [];
 
         // DOM Elements
@@ -235,23 +241,23 @@
         // Logic
         dropzone.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-        btnClear.addEventListener('click', () => { files = []; renderFileList(); });
+        btnClear.addEventListener('click', () => { filesList = []; renderFileList(); });
         btnProcess.addEventListener('click', startAIProcessing);
         btnRestart.addEventListener('click', () => { location.reload(); });
         closeError.addEventListener('click', () => errorModal.classList.add('hidden'));
 
         function handleFiles(newFiles) {
             const pdfs = Array.from(newFiles).filter(f => f.type === 'application/pdf');
-            if (pdfs.length < newFiles.length) showError("Apenas arquivos PDF são permitidos para análise de IA.");
-            files = [...files, ...pdfs].slice(0, 200);
+            if (pdfs.length < newFiles.length) showError("Apenas ficheiros PDF são permitidos.");
+            filesList = [...filesList, ...pdfs].slice(0, 200);
             renderFileList();
         }
 
         function renderFileList() {
             fileList.innerHTML = '';
-            fileListContainer.classList.toggle('hidden', files.length === 0);
-            fileCountBadge.textContent = files.length;
-            files.forEach((f, i) => {
+            fileListContainer.classList.toggle('hidden', filesList.length === 0);
+            fileCountBadge.textContent = filesList.length;
+            filesList.forEach((f, i) => {
                 const div = document.createElement('div');
                 div.className = "flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-[1.25rem]";
                 div.innerHTML = `<div class="flex items-center gap-3 truncate"><i data-lucide="file-text" class="primary-color shrink-0"></i><span class="text-xs font-bold truncate">${f.name}</span></div><button onclick="removeFile(${i})" class="text-slate-300 hover:text-red-500"><i data-lucide="x" size="16"></i></button>`;
@@ -260,7 +266,7 @@
             lucide.createIcons();
         }
 
-        window.removeFile = (i) => { files.splice(i, 1); renderFileList(); };
+        window.removeFile = (i) => { filesList.splice(i, 1); renderFileList(); };
 
         function showError(msg) {
             errorMessage.textContent = msg;
@@ -276,29 +282,42 @@
             });
         }
 
+        function cleanJSONResponse(text) {
+            try {
+                let cleaned = text.replace(/```json\n?|```/g, '').trim();
+                return JSON.parse(cleaned);
+            } catch (e) {
+                console.error("Erro ao limpar JSON:", e, text);
+                throw new Error("A resposta da IA não é um JSON válido.");
+            }
+        }
+
         async function callGeminiAPI(base64Data, fileName) {
-            const systemPrompt = `Você é um especialista em logística e gestão de estoque. Sua tarefa é extrair dados técnicos deste arquivo PDF para preencher uma planilha industrial.
-            Extraia exatamente os seguintes campos:
-            - EAN (Código de barras)
-            - SKU (Identificador interno)
-            - MLB (ID do Mercado Livre, se houver)
-            - ACOMPANHA (Descrição do que vem na embalagem)
-            - MEDIDAS (Formatadas como L x A x P em cm ou conforme informado)
-            - COMPATIBILIDADE (Lista de itens compatíveis)
+            const systemPrompt = `Você é um especialista em logística e catálogo industrial. Sua tarefa é extrair dados técnicos deste PDF para uma planilha.
+            IMPORTANTE: Retorne APENAS o objeto JSON. No campo "medidas", consolide todas as informações de tamanho físico, dimensões (L x A x P), peso (gramas/kg), volume (litros) ou tamanhos nominais (P, M, G, GG, etc.) encontrados no documento.
             
-            Prepare as descrições de "ACOMPANHA" e "COMPATIBILIDADE" de forma clara e estruturada, facilitando a compreensão para outras IAs futuramente.
-            Retorne APENAS um objeto JSON válido seguindo este formato:
-            {"ean": "", "sku": "", "mlb": "", "acompanha": "", "medidas": "", "compatibilidade": ""}`;
+            Campos solicitados:
+            - ean: Código de barras numérico.
+            - sku: Código identificador do produto.
+            - mlb: ID único do Mercado Livre (se disponível).
+            - acompanha: Lista clara de componentes inclusos na embalagem.
+            - medidas: String consolidando Litros, Gramas/Peso, Tamanhos (P/M/G) e Dimensões.
+            - compatibilidade: Lista de modelos ou marcas compatíveis.
+            
+            Formato de saída: {"ean": "", "sku": "", "mlb": "", "acompanha": "", "medidas": "", "compatibilidade": ""}`;
 
             const payload = {
                 contents: [{
                     parts: [
-                        { text: `Analise a ficha técnica do arquivo: ${fileName}` },
+                        { text: `Extraia os dados técnicos abrangentes (incluindo gramas, litros e tamanhos) do ficheiro: ${fileName}` },
                         { inlineData: { mimeType: "application/pdf", data: base64Data } }
                     ]
                 }],
                 systemInstruction: { parts: [{ text: systemPrompt }] },
-                generationConfig: { responseMimeType: "application/json" }
+                generationConfig: { 
+                    responseMimeType: "application/json",
+                    temperature: 0.1 
+                }
             };
 
             const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
@@ -310,10 +329,15 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    if (!response.ok) throw new Error("API Failure");
+                    
+                    if (!response.ok) throw new Error("API Indisponível");
+                    
                     const result = await response.json();
                     const textResponse = result.candidates?.[0]?.content?.parts?.[0]?.text;
-                    return JSON.parse(textResponse);
+                    
+                    if (!textResponse) throw new Error("Resposta vazia da IA");
+                    
+                    return cleanJSONResponse(textResponse);
                 } catch (err) {
                     if (i === 4) throw err;
                     await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
@@ -322,33 +346,41 @@
         }
 
         async function startAIProcessing() {
-            if (files.length === 0) return;
+            if (filesList.length === 0) return;
             document.getElementById('step-1').classList.add('hidden');
             document.getElementById('step-2').classList.remove('hidden');
             document.getElementById('nav-step-1').className = "text-slate-300 flex items-center gap-3 px-6 py-2.5 rounded-full";
             document.getElementById('nav-step-2').className = "step-active flex items-center gap-3 px-6 py-2.5 rounded-full";
 
             processedData = [];
-            for (let i = 0; i < files.length; i++) {
-                currentFileNameDisplay.textContent = `Lendo: ${files[i].name}...`;
+            for (let i = 0; i < filesList.length; i++) {
+                currentFileNameDisplay.textContent = `A extrair dados técnicos: ${filesList[i].name}...`;
                 try {
-                    const b64 = await fileToBase64(files[i]);
-                    const data = await callGeminiAPI(b64, files[i].name);
+                    const b64 = await fileToBase64(filesList[i]);
+                    const data = await callGeminiAPI(b64, filesList[i].name);
                     
                     processedData.push({
-                        'EAN': data.ean || 'N/A',
-                        'SKU': data.sku || 'N/A',
-                        'MLB ': data.mlb || 'N/A',
+                        'EAN': data.ean || 'N/D',
+                        'SKU': data.sku || 'N/D',
+                        'MLB ': data.mlb || 'N/D',
                         'O QUE ACOMPANHA O PRODUTO': data.acompanha || 'Não especificado',
                         'MEDIDAS': data.medidas || 'Não especificado',
                         'COMPATIBILIDADE ': data.compatibilidade || 'Não especificado',
                         'IMPLEMENTADO': ''
                     });
                 } catch (err) {
-                    console.error("Erro no arquivo " + files[i].name, err);
-                    processedData.push({ 'EAN': 'ERRO NA LEITURA', 'SKU': files[i].name, 'IMPLEMENTADO': 'FALHA' });
+                    console.error("Falha no ficheiro: " + filesList[i].name, err);
+                    processedData.push({ 
+                        'EAN': 'ERRO DE LEITURA', 
+                        'SKU': filesList[i].name, 
+                        'MLB ': 'N/D',
+                        'O QUE ACOMPANHA O PRODUTO': 'Erro ao analisar JSON',
+                        'MEDIDAS': 'N/D',
+                        'COMPATIBILIDADE ': 'N/D',
+                        'IMPLEMENTADO': 'FALHA' 
+                    });
                 }
-                const p = Math.round(((i + 1) / files.length) * 100);
+                const p = Math.round(((i + 1) / filesList.length) * 100);
                 progressBar.style.width = `${p}%`;
                 progressText.textContent = `${p}%`;
             }
@@ -367,11 +399,11 @@
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="px-8 py-6 font-mono text-xs">${row.EAN}</td>
-                    <td class="px-8 py-6 font-bold">${row.SKU}</td>
+                    <td class="px-8 py-6 font-bold text-slate-800">${row.SKU}</td>
                     <td class="px-8 py-6 primary-color font-bold">${row['MLB ']}</td>
                     <td class="px-8 py-6 text-xs max-w-[200px] truncate">${row['O QUE ACOMPANHA O PRODUTO']}</td>
-                    <td class="px-8 py-6 text-xs">${row.MEDIDAS}</td>
-                    <td class="px-8 py-6 text-xs italic">${row['COMPATIBILIDADE ']}</td>
+                    <td class="px-8 py-6 text-xs font-semibold">${row.MEDIDAS}</td>
+                    <td class="px-8 py-6 text-xs italic text-slate-500">${row['COMPATIBILIDADE ']}</td>
                     <td class="px-8 py-6 text-slate-200 text-center">—</td>
                 `;
                 tbody.appendChild(tr);
@@ -381,9 +413,9 @@
         function downloadExcel() {
             const ws = XLSX.utils.json_to_sheet(processedData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Dados Gobots AI");
-            ws['!cols'] = [{wch: 18}, {wch: 15}, {wch: 15}, {wch: 45}, {wch: 20}, {wch: 40}, {wch: 15}];
-            XLSX.writeFile(wb, "gobots_extracao_ia.xlsx");
+            XLSX.utils.book_append_sheet(wb, ws, "Extração Gobots");
+            ws['!cols'] = [{wch: 18}, {wch: 15}, {wch: 15}, {wch: 45}, {wch: 30}, {wch: 40}, {wch: 15}];
+            XLSX.writeFile(wb, "gobots_fichas_tecnicas.xlsx");
         }
     </script>
 </body>
